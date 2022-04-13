@@ -5,5 +5,11 @@ class Banque_ligne : Banque
   {
   }
 
+  public override string ToString(){
+    var chaine = "**************** Votre banque en ligne : "+ base.Nom + " ****************";
+    chaine += base.ToString();
+    return chaine;
+  }
+
   
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 
-public class Banque {
+public abstract class Banque {
   private string nom;
   private string adresse;
   private List<Utilisateur> utilisateurs = new List<Utilisateur>();
@@ -26,5 +26,29 @@ public class Banque {
 
   public void AddUtil(Utilisateur util){
     utilisateurs.Add(util);
+  }
+
+  public override string ToString(){
+    var chaine = "---------- Profil de votre banque ----------";
+
+    if (nom != null){
+      chaine += "Nom : " + nom + " /n";
+    }
+    if (adresse != null){
+      chaine += "Adresse : " + adresse + " /n";
+    }
+
+    foreach (var util in utilisateurs){
+      chaine += util.ToString();
+    }
+    return chaine;
+  }
+
+  public string ListUtil(){
+    string chaine ="";
+    foreach(var util in utilisateurs){
+      chaine += "Nom : "+ util.Prenom + "/n";
+    }
+    return chaine;
   }
 }

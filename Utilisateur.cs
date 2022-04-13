@@ -22,9 +22,11 @@ public class Utilisateur{
     get { return solde; }
     set { solde = value; }
   }
-
+  public void AddOB(Operation_bancaire ob){
+    operations.Add(ob);
+  }
   public override string ToString(){
-    var chaine = "************************ /n";
+    var chaine = "************************ Profil ************************/n";
 
     if (prenom != null){
       chaine += "Prenom : " + prenom + " /n";
@@ -34,6 +36,22 @@ public class Utilisateur{
     }
     foreach(var op in operations){
       chaine += op.ToString();
+    }
+
+    return chaine;
+  }
+
+  public string Operations(){
+    var chaine = "************************ Historique des opérations ************************/n";
+
+    foreach(var op in operations){
+      if(op.Type_operation == "crédit"){
+        chaine += "crédit";
+      }
+      else{
+        chaine += "débit";
+      }
+      
     }
 
     return chaine;
